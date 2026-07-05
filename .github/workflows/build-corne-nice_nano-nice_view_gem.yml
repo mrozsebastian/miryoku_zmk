@@ -1,0 +1,23 @@
+# Copyright 2022 Manna Harbour
+# https://github.com/manna-harbour/miryoku
+
+name: 'Build corne nice_nano nice_view_gem'
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/main.yml
+    secrets: inherit
+    with:
+      board: '["nice_nano"]'
+      shield: '["corne_left nice_view_adapter nice_view_gem","corne_right nice_view_adapter nice_view_gem"]'
+      alphas: '["QWERTY"]'
+      nav: '["vi"]'
+      layers: '["default"]'
+      mapping: '["default"]'
+      custom_config: '["default"]'
+      kconfig: '["CONFIG_ZMK_DISPLAY=y\nCONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM=y\nCONFIG_NICE_VIEW_GEM_ANIMATION_MS=96000"]'
+      branches: '["default"]'
+      modules: '["M165437/nice-view-gem/v0.3.0"]'
